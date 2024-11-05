@@ -22,6 +22,11 @@
     "*.js",
     "*.d.ts"
   ],
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "addon-react-native-web"
+  ],
   "scripts": {
     "clean": "rimraf ./dist",
     "buildBabel": "concurrently \"yarn buildBabel:cjs\" \"yarn buildBabel:esm\"",
