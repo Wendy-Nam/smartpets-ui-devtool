@@ -63,10 +63,10 @@ RadioButtonExampleDashed.parameters = {
       code: `
 import React, { useRef } from 'react';
 import { View, Alert, Platform } from 'react-native';
-import RadioButtonGroup from './RadioButtonGroup';
-import RadioButton from './RadioButton';
-import StylizedText from '../Utilities/StylizedText';
-import { RoundedTextButton } from './RoundedButton';
+import RadioButtonGroup from '@common/RadioButtonGroup';
+import RadioButton from '@common/RadioButton';
+import StylizedText from '@common/StylizedText';
+import { RoundedTextButton } from '@common/RoundedButton';
 
 const showAlert = (title, message) => {
   if (Platform.OS === 'web') {
@@ -152,11 +152,11 @@ RadioButtonExampleSolid.parameters = {
       code: `
 import React, { useRef } from 'react';
 import { View, Alert, Platform } from 'react-native';
-import RadioButtonGroup from './RadioButtonGroup';
-import RadioButton from './RadioButton';
-import StylizedText from '../Utilities/StylizedText';
-import { RoundedTextButton } from './RoundedButton';
-import Avatar from '../Frames/Avatar';
+import RadioButtonGroup from '@common/RadioButtonGroup';
+import RadioButton from '@common/RadioButton';
+import StylizedText from '@common/StylizedText';
+import { RoundedTextButton } from '@common/RoundedButton';
+import Avatar from '@common/Avatar';
 
 const showAlert = (title, message) => {
   if (Platform.OS === 'web') {
@@ -237,10 +237,10 @@ RadioButtonExampleText.parameters = {
       code: `
 import React, { useRef } from 'react';
 import { View, Alert, Platform } from 'react-native';
-import RadioButtonGroup from './RadioButtonGroup';
-import RadioButton from './RadioButton';
-import StylizedText from '../Utilities/StylizedText';
-import { RoundedTextButton } from './RoundedButton';
+import RadioButtonGroup from '@common/RadioButtonGroup';
+import RadioButton from '@common/RadioButton';
+import StylizedText from '@common/StylizedText';
+import { RoundedTextButton } from '@common/RoundedButton';
 
 const showAlert = (title, message) => {
   if (Platform.OS === 'web') {
