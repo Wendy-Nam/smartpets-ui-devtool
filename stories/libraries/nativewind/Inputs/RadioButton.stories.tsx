@@ -40,10 +40,3 @@ TextVariant.args = {
   label: 'Text Label',
 };
 
-export const SolidInactiveOutline = RadioButtonTemplate.bind({});
-SolidInactiveOutline.args = {
-  isSelected: false,
-  variant: 'text',
-  label: 'Solid Outline',
-  inactiveOutlineStyle: 'solid',
-};

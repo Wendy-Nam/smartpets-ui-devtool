@@ -62,6 +62,7 @@ export const ProductPurchaseCardExample = ProductPurchaseTemplate.bind({});
 ProductPurchaseCardExample.args = {
   title: '상품 구매',
   content: '상품 구매 설명입니다.',
+  reverse: true,
 };
 
 export const ReviewCardExample = ReviewTemplate.bind({});

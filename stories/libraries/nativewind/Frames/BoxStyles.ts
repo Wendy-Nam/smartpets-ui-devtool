@@ -96,13 +96,13 @@ export const getBoxOutlnes = (outline: OutlinePreset) : ViewStyle => {
         return {
           backgroundColor: 'bg-white',
           borderStyle: 'rounded-3xl',
-          containerLayout: 'my-1 p-6 max-h-28 max-w-full',
+          containerLayout: 'my-1 p-6 max-h-28 max-w-full min-w-80',
         };
       case 'flatcard-fit': 
         return {
           backgroundColor: 'bg-white',
           borderStyle: 'rounded-3xl',
-          containerLayout: 'my-1 p-6 py-3.5 max-h-28 max-w-full',
+          containerLayout: 'my-1 p-6 py-3.5 max-h-28 max-w-full min-w-80',
         };
       case 'opaque-panel': 
         return {

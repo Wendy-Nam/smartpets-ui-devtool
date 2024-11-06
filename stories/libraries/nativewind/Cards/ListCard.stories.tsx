@@ -72,5 +72,5 @@ ReversedCard.args = {
   avatar: sampleAvatar,
   label: 'Reversed',
   title: <StylizedText type="header2">Reversed Layout</StylizedText>,
-  content: <StylizedText type="body2" styleClass='mr-6'>The layout is reversed.</StylizedText>,
+  content: <StylizedText type="body2" styleClass='mr-auto'>The layout is reversed.</StylizedText>,
 };

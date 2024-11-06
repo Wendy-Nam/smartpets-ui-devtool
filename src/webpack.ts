@@ -92,6 +92,13 @@ const webpackFinal = async (config: any, options: Options) => {
   const modules = [...DEFAULT_INCLUDES, ...userModules];
   const userAliases = options.modulesToAlias ?? {};
 
+  config.module.rules.push({
+    test: /\.ttf$/,
+    loader: 'url-loader', // or directly file-loader
+    include: [
+      path.resolve(__dirname, 'node_modules/react-native-vector-icons'),
+    ],
+  });
   // fix for uncompiled react-native dependencies
   config.module.rules.push({
     test: /\.(js|jsx|ts|tsx)$/,
