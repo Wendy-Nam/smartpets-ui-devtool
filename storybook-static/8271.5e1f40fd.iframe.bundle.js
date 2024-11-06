@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_storybook_addon_react_native_web=self.webpackChunk_storybook_addon_react_native_web||[]).push([[8271],{"./stories/libraries/nativewind/image/icon/arrow_front.png":(module,__unused_webpack_exports,__webpack_require__)=>{module.exports=__webpack_require__.p+"static/media/arrow_front.1cb98662.png"}}]);

@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_storybook_addon_react_native_web=self.webpackChunk_storybook_addon_react_native_web||[]).push([[3367],{"./stories/libraries/nativewind/image/frame/registerPhoto.png":(module,__unused_webpack_exports,__webpack_require__)=>{module.exports=__webpack_require__.p+"static/media/registerPhoto.84c9dd7c.png"}}]);
