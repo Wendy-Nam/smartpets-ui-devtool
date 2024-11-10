@@ -7,7 +7,7 @@ import SquareBox, {SquareCardSize, OutlinePreset, SquareBoxProps} from '../Frame
 export type ButtonColor = 'bg-transparent' | 'bg-secondary' | 'bg-primary' | 'bg-white' | 'bg-black' | `bg-skyblue`; // Define preset options
 
 type RoundedTextButtonProps = {
-  icon?: React.ReactNode,
+  icon?: React.ReactNode;
   color?: ButtonColor;
   textColor?: string;
   textType?: string;

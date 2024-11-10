@@ -10,9 +10,9 @@ export default {
   title: 'Cards/Base',
   component: ListCard,
   argTypes: {
-    layout: { control: 'select', options: ['simple', 'detailed', 'labelled', 'contentOnly'], description: '카드 레이아웃 타입' },
+    layout: { control: 'select', options: ['simple', 'contentOnly'], description: '카드 레이아웃 타입' },
     reverse: { control: 'boolean', description: '좌우 반전 여부' },
-    preset: { control: 'select', options: ['A', 'B', 'C', 'D', 'modalC', 'modalB', 'greycard', 'dashedcard', 'squarecard', 'opaque-panel', 'flatcard', 'flatcard-fit'], description: '디자인 프리셋' },
+    preset: { control: 'select', options: ['flatcard', 'flatcard-fit', 'flatcard2'], description: '디자인 프리셋' },
     avatar: { control: 'text', description: '아바타 이미지 소스' },
     label: { control: 'text', description: '아바타 하단에 표시되는 라벨 텍스트' },
     title: { control: 'text', description: '카드 상단의 타이틀' },
@@ -37,25 +37,6 @@ SimpleLayout.args = {
   label: 'User',
   title: <StylizedText type="header3">Simple Layout</StylizedText>,
   content: <StylizedText type="body2">This is a simple layout for the ListCard.</StylizedText>,
-};
-
-export const DetailedLayout = Template.bind({});
-DetailedLayout.args = {
-  layout: 'detailed',
-  avatar: sampleAvatar,
-  label: 'Admin',
-  title: <StylizedText type="header3">Detailed Layout</StylizedText>,
-  content: <StylizedText type="body2">This layout contains additional detailed information.</StylizedText>,
-  badge: <PillBadge text="Badge" />,
-};
-
-export const LabelledLayout = Template.bind({});
-LabelledLayout.args = {
-  layout: 'labelled',
-  avatar: sampleAvatar,
-  label: 'Labelled',
-  title: <StylizedText type="header3">Labelled Layout</StylizedText>,
-  content: <StylizedText type="body2">Content in labelled layout with avatar label.</StylizedText>,
 };
 
 export const ContentOnlyLayout = Template.bind({});

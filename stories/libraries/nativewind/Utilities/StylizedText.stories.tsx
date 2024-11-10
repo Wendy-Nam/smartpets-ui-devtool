@@ -31,7 +31,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "<b>파일 위치: @common/StylizedText</b> \n\n거의 모든 컴포넌트 내부에서 쓰이며, 직접 다른 화면을 구성할 때도 Text 대신 매번 가져다 써야함\n\nPretendard 폰트와 함께, 텍스트스타일 세트들을 지정해뒀음"
+        component: "<b>파일 위치: @common/StylizedText</b> \n\n거의 모든 컴포넌트 내부에서 쓰이며, 직접 다른 화면을 구성할 때도 Text 대신 매번 가져다 써야함\n\nPretendard 폰트와 함께, 텍스트스타일 세트들을 지정해뒀음 (헤더텍스트에도 type 적용 가능)"
       },
     },
   },
@@ -43,7 +43,6 @@ export const DefaultText = Template.bind({});
 DefaultText.args = {
   children: '이것은 기본 텍스트입니다.',
   type: 'body1',
-  color: 'black',
   styleClass: 'text-black',
 };
 

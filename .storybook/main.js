@@ -53,7 +53,7 @@ export default {
   },
   webpackFinal: async (config) => {
     // fonts.css 추가
-    config.entry.push(path.resolve(__dirname, './fonts.css'));
+    config.entry.push(path.resolve(__dirname, './global.css'));
     config.module.rules.push({
       test: /\.(woff|woff2|eot|ttf|otf)$/,
       use: [

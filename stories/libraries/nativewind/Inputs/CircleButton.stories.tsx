@@ -7,9 +7,11 @@ export default {
   title: 'Inputs/CircleButton',
   component: RoundedCircleButton,
   argTypes: {
-    color: { control: 'select', options: ['bg-transparent', 'bg-secondary', 'bg-primary', 'bg-white', 'bg-black', 'bg-skyblue'] },
+    color: { control: 'select', options: ['bg-transparent', 'bg-secondary', 'bg-primary', 'bg-white', 'bg-black', 'bg-skyblue', 'bg-skyblue border border-2 border-primary'] },
     shadow: { control: 'boolean' },
-    size: { control: 'number' },
+    size: {
+      control: { type: 'range', min: 20, max: 100, step: 5 },
+    },
     onPress: { action: 'pressed' },
   },
   parameters: {

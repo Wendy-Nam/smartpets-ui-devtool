@@ -1,29 +1,49 @@
 import React from 'react';
-import { View , ImageSourcePropType } from 'react-native';
+import { View , ImageSourcePropType, Image, TouchableOpacity } from 'react-native';
 import { PillBadge, RatingBadge } from '../Frames/Badge';
 import MCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import StylizedText from '../Utilities/StylizedText';
 import ListCard from './ListCard';
 import bagImg from '../image/icon/bag.png';
-import dog1 from '../image/placeholder/dog.jpg'; // 기본 이미지
+import dog1 from '../image/placeholder/dog.jpg';
+import ModalLayout from '../Modal/ModalLayout';
+import { useState } from 'react';
+import { RoundedTextButton, RoundedSquareButton } from '../Inputs/RoundedButton';
+
 
 // 리워드 관련
 interface RewardCardProps {
   avatarSource?: ImageSourcePropType | React.ReactNode | string;
   title: string;
   content: string;
-  completed: boolean;
+  status?: '미달성' | '달성' | '수령 완료';
   onPress?: ()=> void;
 }
 
-export const RewardCard: React.FC<RewardCardProps> = ({ avatarSource, title, content, completed, onPress }) => {
+//NOTE : 뱃지 색상 3가지로 확장하여 추가하였음.
+export const RewardCard: React.FC<RewardCardProps & { status: '미달성' | '달성' | '수령 완료' }> = ({
+  avatarSource,
+  title,
+  content,
+  status,
+  onPress,
+}) => {
+  // 배지 색상 및 텍스트 설정
+  const badgeStyles = {
+    '미달성': { color: 'bg-secondary', text: '미달성' },
+    '달성': { color: 'bg-primary', text: '달성' },
+    '수령 완료': { color: 'bg-darkgreen', text: '수령 완료' },
+  };
+
+  const { color, text } = badgeStyles[status];
+
   return (
-    <ListCard 
+    <ListCard
       avatar={avatarSource}
       onPress={onPress}
       title={<StylizedText type="header7" styleClass="text-black mt-1.5">{title}</StylizedText>}
       content={<StylizedText type="body2" styleClass="text-secondary mb-1.5">{content}</StylizedText>}
-      badge={<PillBadge color={completed ? 'bg-primary' : 'bg-secondary'} textColor="text-white" text={completed ? '달성' : '미달성'} />}
+      badge={<PillBadge color={color} textColor="text-white" text={text} />}
     />
   );
 };
@@ -76,6 +96,8 @@ export const VeterinaryCard: React.FC<VeterinaryCardProps> = ({ title, contact, 
   />
 );
 
+
+
 // 제목행의 앞에 아이템 하나 집어넣음 (아랫줄의 본문란은 전혀 옆으로 밀리지 X)
 // 비문등록 항목버튼
 interface RegistrationCardProps {
@@ -105,7 +127,7 @@ export const RegistrationCard: React.FC<RegistrationCardProps> = ({ title, conte
 interface ProductPurchaseCardProps {
   title: string;
   content: string;
-  reverse?: ()=> void;
+  reverse?: boolean;
   onPress?: ()=> void;
 }
 
@@ -139,6 +161,56 @@ export const ReviewCard: React.FC<ReviewCardProps> = ({ reviewer, rating, commen
       }
       badge={ratingBadge}
       content={<StylizedText type="body2" styleClass="text-black -mt-1 mb-2">{comment}</StylizedText>}
+    />
+  );
+};
+// MyPage PetCard
+interface DeviceSelectionModalProps {
+  visible: boolean;
+  setVisible: (visible: boolean) => void;
+  devices: Device[];
+  onSelectDevice: (deviceId: string) => void;
+}
+
+export const DeviceSelectionModal: React.FC<DeviceSelectionModalProps> = ({
+  visible,
+  setVisible,
+  devices,
+  onSelectDevice,
+}) => {
+  return (
+    <ModalLayout
+      visible={visible}
+      setVisible={setVisible}
+      title="디바이스 선택"
+      titleAlign="center"
+      rows={[
+        {
+          content: devices.map(device => (
+            <RoundedTextButton
+              key={device.id}
+              content={device.name}
+              widthOption="lg"
+              onPress={() => {
+                onSelectDevice(device.id);
+                setVisible(false);
+              }}
+            />
+          )),
+        },
+        {
+          content: [
+            <RoundedTextButton
+              key="cancel"
+              content="취소"
+              color="bg-secondary"
+              widthOption="lg"
+              onPress={() => setVisible(false)}
+            />,
+          ],
+        },
+      ]}
+      transparent={false}
     />
   );
 };

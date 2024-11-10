@@ -4,6 +4,7 @@ import StylizedText, { getStyles } from '../Utilities/StylizedText';
 import { ColorMap, OpacityMap } from '../Utilities/ColorMap';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Feather from 'react-native-vector-icons/Feather';
+import { AntDesignEyeInvisible, AntDesignEye } from '../../Svgs/Icons';
 
 interface CustomTextInputProps {
   label: string;
@@ -172,7 +173,7 @@ const CustomTextInput: React.FC<CustomTextInputProps> = ({
           )}
 
           <TextInput
-            className="px-1 mt-[14px] text-secondary"
+            className="px-1 py-2 mt-2 text-secondary"
             value={value}
             onChangeText={(text) => {
               if (keyboardType === 'phone-pad') {
@@ -198,11 +199,7 @@ const CustomTextInput: React.FC<CustomTextInputProps> = ({
 
         {type === 'passwordField' ? (
           <Pressable onPress={togglePasswordVisibility} className="mr-1">
-            <Ionicons
-              name={isPasswordVisible ? 'eye-off' : 'eye'}
-              size={iconSize}
-              color={IconColor}
-            />
+            { isPasswordVisible ? <AntDesignEye size={iconSize} color={IconColor}/> : <AntDesignEyeInvisible size={iconSize} color={IconColor} /> }
           </Pressable>
         ) : type === 'iconField' && (rightComponent || (iconLibrary && iconName)) ? (
           <View className="mr-2">

@@ -22,7 +22,6 @@ export default {
 
 // DiseaseCard 기본 사용 예제
 const DiseaseCardTemplate: ComponentStory<typeof DiseaseCard> = (args) => <DiseaseCard {...args} />;
-
 export const DefaultDiseaseCard = DiseaseCardTemplate.bind({});
 DefaultDiseaseCard.args = {
   title: '심장 질환',
@@ -34,7 +33,6 @@ DefaultDiseaseCard.args = {
 
 // VaccinationCard 기본 사용 예제
 const VaccinationCardTemplate: ComponentStory<typeof VaccinationCard> = (args) => <VaccinationCard {...args} />;
-
 export const DefaultVaccinationCard = VaccinationCardTemplate.bind({});
 DefaultVaccinationCard.args = {
   title: '광견병 백신',

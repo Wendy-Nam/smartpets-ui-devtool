@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import ColorMap from '../Utilities/ColorMap';
 import { TagBadge } from '../Frames/Badge';
 import { DesignPreset } from '../Frames/RoundedBox';
@@ -11,7 +11,6 @@ import FAIcon from 'react-native-vector-icons/FontAwesome5'
 interface DiseaseCardProps {
   title: string;
   percentage?: number;
-  preset?: DesignPreset;
   badge?: boolean;
   body?: boolean;
   icon?: boolean;
@@ -51,7 +50,7 @@ const getDescription = (percentage?: number) => {
 
 export const DiseaseCard: React.FC<DiseaseCardProps> = ({
   title = 'Default Title',
-  percentage,
+  percentage = 50,
   badge = false,
   body = false,
   icon = false,
@@ -97,28 +96,36 @@ export const DiseaseCard: React.FC<DiseaseCardProps> = ({
 interface VaccinationCardProps {
   title: string;
   description: string;
-  preset?: DesignPreset;
+  onPress?: () => void;
 }
+
 
 export const VaccinationCard: React.FC<VaccinationCardProps> = ({
   title,
   description,
+  onPress, // onPress 속성 받기
 }) => {
-  const preset:DesignPreset = "greycard";
+  const preset: DesignPreset = "greycard";
+
   return (
     <View className='flex-wrap mx-auto'>
+    <TouchableOpacity onPress={onPress} activeOpacity={0.7}>
       <RoundedBox preset={preset} shadow={false}>
-          <View className='min-w-full px-3'>
+        <View className="min-w-full px-3">
           <View className="mt-1">
-            <StylizedText type="header4" styleClass="text-black">{title}</StylizedText>
+            <StylizedText type="header4" styleClass="text-black">
+              {title}
+            </StylizedText>
           </View>
-          {/* Body (Second Row) */}
           <View className="mb-1">
-            <StylizedText type="body3" styleClass="text-black">{description}</StylizedText>
+            <StylizedText type="body3" styleClass="text-black">
+              {description}
+            </StylizedText>
           </View>
-          </View>
+        </View>
       </RoundedBox>
-      </View>
+    </TouchableOpacity>
+    </View>
   );
 };
 

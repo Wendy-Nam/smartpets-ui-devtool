@@ -18,7 +18,7 @@ const RoundedBox: React.FC<RoundedBoxProps> = ({
   preset = 'A',
   shadow = true,
   onPress,
-  outline = 'solid'
+  outline = 'solid',
 }) => {
   const styles = getBoxStyles(preset);
   const outlines = getBoxOutlnes(outline);

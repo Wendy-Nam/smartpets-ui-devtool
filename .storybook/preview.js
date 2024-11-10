@@ -1,4 +1,5 @@
 import './global.css';
+import './fonts.css';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 

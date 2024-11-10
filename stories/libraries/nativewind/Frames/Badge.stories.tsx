@@ -23,15 +23,15 @@ const PillTemplate: ComponentStory<typeof PillBadge> = (args) => <PillBadge {...
 export const Pill = PillTemplate.bind({});
 Pill.args = {
   text: 'Pill Badge',
-  color: 'bg-gray-200',
-  textColor: 'text-gray-800',
+  color: 'bg-lightgrey',
+  textColor: 'text-secondary',
 };
 
 const TagTemplate: ComponentStory<typeof TagBadge> = (args) => <TagBadge {...args} />;
 export const Tag = TagTemplate.bind({});
 Tag.args = {
   text: 'Tag Badge',
-  color: 'bg-red',
+  color: 'bg-danger',
   textColor: 'text-white',
 };
 
@@ -39,7 +39,7 @@ const BadgeTemplate: ComponentStory<typeof Badge> = (args) => <Badge {...args} /
 export const DefaultBadge = BadgeTemplate.bind({});
 DefaultBadge.args = {
   text: 'Default Badge',
-  color: 'bg-green',
+  color: 'bg-safe',
   textColor: 'text-black',
 };
 

@@ -1,8 +1,11 @@
 // .storybook/stories/Cards.stories.tsx
 
 import React from 'react';
+import {View} from 'react-native';
 import { ComponentStory, ComponentMeta } from '@storybook/react-native';
 import { RewardCard, WalkDetailsCard, VeterinaryCard, RegistrationCard, ProductPurchaseCard, ReviewCard } from './FlatListCards';
+import { RoundedCircleButton } from '../Inputs/RoundedButton';
+import StylizedText from '../Utilities/StylizedText';
 import AvatarPlaceholder from '../image/placeholder/dog.jpg'; // 기본 이미지
 
 export default {
@@ -14,7 +17,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: '<b>파일 위치: @components/FlatListCards</b> \n\n\n하위컴포넌트: RewardCard, WalkDetailsCard, VeterinaryCard, RegistrationCard, ProductPurchaseCard, ReviewCard'
+        component: '<b>파일 위치: @components/FlatListCards</b> \n\n\n하위컴포넌트: RewardCard, WalkDetailsCard, VeterinaryCard, RegistrationCard, ProductPurchaseCard, ReviewCard, PetCard, DeviceSelectionModal'
       },
     },
   },
@@ -32,7 +35,7 @@ RewardCardExample.args = {
   avatarSource: AvatarPlaceholder, // 예시 이미지
   title: '리워드 타이틀',
   content: '리워드 설명이 들어갑니다.',
-  completed: true,
+  status: '달성',
 };
 
 export const WalkDetailsCardExample = WalkDetailsTemplate.bind({});

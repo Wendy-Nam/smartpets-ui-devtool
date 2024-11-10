@@ -111,7 +111,7 @@ OpaquePanel.args = {
 export const FlatCard = Template.bind({});
 FlatCard.args = {
   preset: 'flatcard',
-  shadow: false,
+  shadow: true,
   outline: 'solid',
   children: 'Flat Card Styled RoundedBox.',
 };
@@ -119,7 +119,22 @@ FlatCard.args = {
 export const FlatCardFit = Template.bind({});
 FlatCardFit.args = {
   preset: 'flatcard-fit',
-  shadow: false,
+  shadow: true,
   outline: 'solid',
+  children: 'Flat Card Fit Styled RoundedBox.',
+};
+
+export const FlatCard2 = Template.bind({});
+FlatCard2.args = {
+  preset: 'flatcard2',
+  shadow: false,
+  outline: 'inactive-solid',
+  children: 'Flat Card Fit Styled RoundedBox.',
+};
+
+export const YellowCard2 = Template.bind({});
+YellowCard2.args = {
+  preset: 'A-yellow-20',
+  shadow: false,
   children: 'Flat Card Fit Styled RoundedBox.',
 };

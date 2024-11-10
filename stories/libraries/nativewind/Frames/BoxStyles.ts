@@ -2,8 +2,8 @@ import ColorMap, { OpacityMap } from '../Utilities/ColorMap';
 import { ViewStyle } from 'react-native';
 
 export type DesignPreset = 'A' | 'B' | 'C' | 'D' | 'modalC' | 'modalB' |
-                            'greycard' | 'dashedcard' | 'squarecard' | 
-                            'opaque-panel' | 'flatcard' | 'flatcard-fit'; 
+                            'greycard' | 'dashedcard' | 'squarecard' | 'A-yellow-20' |
+                            'opaque-panel' | 'flatcard' | 'flatcard-fit' | 'flatcard2'; 
 // 파일 하단에 각 옵션에 따른 스타일 설명
 
 export type OutlinePreset = 'solid' | 'dashed' | 'dotted' 
@@ -78,7 +78,7 @@ export const getBoxOutlnes = (outline: OutlinePreset) : ViewStyle => {
         return {
         backgroundColor: 'bg-white',
         borderStyle: 'rounded-t-[24px]',
-        containerLayout: 'w-full h-2/5 mx-auto px-12 py-6 flex items-center justify-bottom',
+        containerLayout: 'w-full mx-auto px-12 py-6 flex items-center justify-bottom', // NOTE : h-80으로 고정해두면 내부 속성에 따라 높이 늘어나지 않음. 그냥 삭제함
       };
       case 'greycard':  // 옅은 회색박스 - 질병정보카드1 (아이콘)
         return {
@@ -104,12 +104,24 @@ export const getBoxOutlnes = (outline: OutlinePreset) : ViewStyle => {
           borderStyle: 'rounded-3xl',
           containerLayout: 'my-1 p-6 py-3.5 max-h-28 max-w-full min-w-80',
         };
+      case 'flatcard2': 
+      return {
+        backgroundColor: 'bg-white',
+        borderStyle: 'rounded-2xl',
+        containerLayout: 'py-4 pl-1 pr-4 h-24 justify-center',
+      };
       case 'opaque-panel': 
         return {
-          backgroundColor: 'bg-white opacity-50',
+          backgroundColor: `bg-white/50`,
           borderStyle: 'rounded-[16px]',
-          containerLayout: 'p-6',
+          containerLayout: 'px-4 py-5 max-w-full flex-row justify-center items-center space-x-10 w-[85%]',
       };
+      case 'A-yellow-20': //'A'랑 색상만 다름
+      return {
+        backgroundColor: 'bg-yellow/20',
+        borderStyle: 'rounded-[16px]',
+        containerLayout: 'py-6 px-2',
+    };
       default:
         return {
           backgroundColor: 'bg-white',

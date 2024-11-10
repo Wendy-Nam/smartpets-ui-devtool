@@ -11,7 +11,7 @@ export default {
   argTypes: {
     size: {
       control: 'select',
-      options: ['xs', 'sm', 'md', 'lg'],
+      options: ['xxs', 'xs', 'sm', 'md', 'lg'],
       description: 'Square box의 크기 선택',
     },
     shadow: {

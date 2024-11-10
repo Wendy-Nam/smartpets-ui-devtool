@@ -2,6 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import StylizedText from '../Utilities/StylizedText';
 import AntIcon from 'react-native-vector-icons/AntDesign';
+import {AntDesignStarOutlined} from '../../Svgs/Icons';
 import ColorMap from '../Utilities/ColorMap';
 
 type BadgeProps = {
@@ -62,8 +63,8 @@ export const RatingBadge: React.FC<RatingBadgeProps> = ({
   return (
     <View className='flex-wrap'>
     <View className="flex-row items-center px-3 py-1">
-      <AntIcon name="staro" size={starSize} color={ColorMap['warning']} />
-      <StylizedText type={textSize} styleClass="ml-2 text-black">
+      <AntDesignStarOutlined size={starSize} color={ColorMap['warning']} />
+      <StylizedText type={textSize} styleClass="ml-2 text-black mt-1">
         {rating.toFixed(1)}
       </StylizedText>
     </View>

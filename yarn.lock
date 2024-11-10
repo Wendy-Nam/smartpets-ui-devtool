@@ -4101,6 +4101,7 @@ __metadata:
     "@storybook/addon-essentials": ^8.3.2
     "@storybook/addon-mdx-gfm": ^8.3.2
     "@storybook/addon-react-native-web": ^0.0.26
+    "@storybook/addon-styling-webpack": ^1.0.1
     "@storybook/addon-viewport": ^8.4.2
     "@storybook/addon-webpack5-compiler-babel": ^3.0.3
     "@storybook/react": ^8.3.2
@@ -4166,6 +4167,17 @@ __metadata:
       optional: true
   languageName: unknown
   linkType: soft
+
+"@storybook/addon-styling-webpack@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@storybook/addon-styling-webpack@npm:1.0.1"
+  dependencies:
+    "@storybook/node-logger": ^8.0.0-alpha.10
+  peerDependencies:
+    webpack: ^5.0.0
+  checksum: 3a507f9e944d1b23f97c201a59169c62e5d3fe7a750226a1fd13a2941d96a92543b87b1bcda3deb780831505fa75956b1ebd1838a7445495831c9a63f9b192b9
+  languageName: node
+  linkType: hard
 
 "@storybook/addon-toolbars@npm:8.4.2":
   version: 8.4.2
@@ -4352,6 +4364,15 @@ __metadata:
   peerDependencies:
     storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
   checksum: 61b8f845f3271c2dd84597a94c2905a785949a2467582663165e476f455f1942b9c3be77a08f5101848d8a75ca23aa9f7db620d81f202d19093af7695d6ca8a0
+  languageName: node
+  linkType: hard
+
+"@storybook/node-logger@npm:^8.0.0-alpha.10":
+  version: 8.4.2
+  resolution: "@storybook/node-logger@npm:8.4.2"
+  peerDependencies:
+    storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
+  checksum: 8f68905af6b07b001136be260d4996925f89782302462c8dc88fd916dedb3ebf1ba613ccfd01e7cf2f7f37f13dfe7da55a1befdab29b7da966a2aead91bfb85d
   languageName: node
   linkType: hard
 
