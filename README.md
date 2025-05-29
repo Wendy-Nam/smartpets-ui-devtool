@@ -1,334 +1,67 @@
-# React Native Web addon for Storybook
+# 🧩 Smartpets UI Devtool
 
-This addon configures `@storybook/react` to display React Native (RN) projects using React Native for Web (RNW)
+### 📎 [배포된 웹사이트 보기](https://wendy-jmcomponents-rn.vercel.app)
 
-- [React Native Web addon for Storybook](#react-native-web-addon-for-storybook)
-  - [Getting Started](#getting-started)
-  - [Common issues](#common-issues)
-  - [Config options](#config-options)
-    - [Untranspiled react native libraries](#untranspiled-react-native-libraries)
-    - [Aliasing react native web libraries](#aliasing-react-native-web-libraries)
-    - [Adding babel plugins](#adding-babel-plugins)
-  - [Configuring popular libraries](#configuring-popular-libraries)
-  - [Adding support for static assets and svgs](#adding-support-for-static-assets-and-svgs)
-  - [Node polyfills for webpack 5](#node-polyfills-for-webpack-5)
-  - [Known limitations](#known-limitations)
+| 항목 | 내용 |
+|------|------|
+| **프로젝트 명** | Smartpets UI Devtool |
+| **기반 기술** | React Native Web + Storybook |
+| **목적** | 공통 UI 컴포넌트의 테스트, 코드 생성 자동화, 협업 표준화 |
+| **도구 개발** | 테스트 가능한 UI 인터페이스 구축<br>정적 배포 자동화 및 시각 기반 QA 환경 제공<br>CI 없이도 활용 가능한 **프론트엔드 DevTool**로 설계 (**기여도 100%**) |
+| **UI 컴포넌트 소스** | Capstone_FE 팀 내 협업으로 공동 제작<br>(본 레포는 테스트 및 문서화를 위한 **독립 도구**) |
 
-See the [FAQ](https://github.com/storybookjs/addon-react-native-web/blob/main/FAQ.md) for common questions.
+---
 
-You can read more about this package [in this blog post](https://www.dannyhwilliams.co.uk/introducing-react-native-web-storybook).
+### 👤 Maintainer  
+[**Wendy-Nam (남서아)**](https://github.com/Wendy-Nam)
 
-To contribute see the contributing guide [here](https://github.com/storybookjs/addon-react-native-web/blob/main/CONTRIBUTING.md)
+### 🧩 관련 프로젝트  
+📦 [Smartpets Capstone_FE](https://github.com/KAU-SMART-PETS/Capstone_FE/tree/main)
 
-Heres a screen shot of how you could use this alongside storybook/react-native, the image is taken from the following [starter code](https://github.com/dannyhw/expo-storybook-starter)
+> Smartpets 프로젝트의 UI 테스트 및 협업 표준화를 위한 별도 도구입니다.  
+> Storybook 설정부터 인터페이스 구성, 정적 배포까지 전 과정을 단독 설계·구현했습니다.
 
-![image with storybook on mobile and web](https://github.com/user-attachments/assets/95c222cf-2012-41a5-a643-845dedea8cb4)
+---
 
+## 🎯 목적
 
-## Getting Started
+- 공통 UI 컴포넌트의 **동작 테스트 및 문서화**
+- **실시간 props 조작 / 코드 프리뷰 / 예제 확인** 제공
+- QA 기준 통일 및 **온보딩 효율 향상**
+- 모바일 환경과 분리된 **웹 기반 인터페이스 제공**
+- **정적 배포(Vercel**)를 통한 독립 사용 가능
 
-Assuming you've got an existing RN project, run the following from the project root:
+---
 
-```sh
-npx sb init --type react
-yarn add react-dom react-native-web babel-plugin-react-native-web @storybook/addon-react-native-web @react-native/babel-preset --dev
+## 🛠️ 기술 스택
+
+- `React Native Web`  
+- `Storybook for React Native`  
+- `@storybook/addon-docs`  
+- `@storybook/addon-controls`  
+- `Vercel` (정적 배포)
+
+---
+
+## 📁 디렉토리 구조
+
+이 레포는 [storybookjs/addon-react-native-web](https://github.com/storybookjs/addon-react-native-web) 예제를 기반으로,  
+**협업 효율 향상과 테스트 표준화를 위한 별도 도구로 재구성**한 프로젝트입니다.
+
+```
+.storybook/                     # Storybook 설정 파일
+stories/libraries/nativewind/   # 공통 컴포넌트 및 스토리 정의
 ```
 
-Then edit your `.storybook/main.js`:
+> `react-native-web`과 `nativewind`의 호환을 위해 샘플 구조를 참고해 설계하였습니다.
 
-```js
-module.exports = {
-  addons: [/*existing addons,*/ '@storybook/addon-react-native-web'],
-};
+---
+
+## 💻 실행 방법
+
+```bash
+npm install
+npm run storybook
 ```
 
-From here, you should be able to write stories incorporating your RN components according to
-the [Storybook for React](https://storybook.js.org/docs/react/get-started/introduction) instructions.
 
-## Common issues
-
-Please see the [FAQ](https://github.com/storybookjs/addon-react-native-web/blob/main/FAQ.md) for common issues like the "loader not found" error.
-
-## Config options
-
-Most packages should work without extra changes however in some cases extra steps are needed.
-One common example is "reanimated" which requires some babel config and extra transpilation.
-
-| Options                       | Type                                                | Description                                                                     |
-| ----------------------------- | --------------------------------------------------- | ------------------------------------------------------------------------------- |
-| modulesToTranspile            | `Array<string>`                                     | node_modules that need transpiling                                              |
-| modulesToAlias                | `{[key: string]: string}`                           | node_modules that need aliasing                                                 |
-| babelPlugins                  | `Array<string \| [string, Record<string, string>]>` | Babel plugins you want to apply                                                 |
-| projectRoot                   | `string`                                            | Path to the root of your project, if in a mono repo you might need to set this. |
-| babelPresets                  | `Array<string \| [string, Record<string, string>]>` | Babel presets you want to apply                                                 |
-| babelPresetReactOptions       | `Record<string, any>`                               | Options to pass options to @babel/preset-react                                  |
-| babelPresetReactNativeOptions | `Record<string, any>`                               | Options to pass options to @react-native/babel-preset                           |
-
-### Untranspiled react native libraries
-
-Many react-native packages are shipped untranspiled and this doesn't work for the web platform. If you receive errors like "proper loader not found" after adding a package try adding it to the `modulesToTranspile` option for this addon.
-
-You can do that like this:
-
-```js
-module.exports = {
-  addons: [
-    /*existing addons,*/
-    {
-      name: '@storybook/addon-react-native-web',
-      options: {
-        modulesToTranspile: ['react-native-package-name'],
-      },
-    },
-  ],
-};
-```
-
-### Aliasing react native web libraries
-
-Some react-native packages recommend module aliasing as a means of importing and using the web variant of an existing package. If you need to add additional key:value pairs to webpack's `config.resolve.alias`, use the `modulesToAlias` option for this addon. You don't need to add react-native-web to this list as it is already included by default.
-
-You can do that like this:
-
-```js
-module.exports = {
-  addons: [
-    /*existing addons,*/
-    {
-      name: '@storybook/addon-react-native-web',
-      options: {
-        modulesToAlias: {
-          'react-native-package-name': 'react-native-web-package-name',
-        },
-      },
-    },
-  ],
-};
-```
-
-Replace `react-native-package-name` with the name of a real package.
-
-### Adding babel plugins
-
-It's common to provide a babel plugin for certain packages in the react native eco system and you can pass a list of these
-to the addon.
-
-```js
-module.exports = {
-  addons: [
-    /*existing addons,*/
-    {
-      name: '@storybook/addon-react-native-web',
-      options: {
-        babelPlugins: ['babel-plugin-name'],
-      },
-    },
-  ],
-};
-```
-
-## Configuring popular libraries
-
-Many libraries work without extra config, heres some examples of config required for some packages.
-
-Note: react-native-vector-icons requires some extra steps due to fonts required and there will be a future addon
-with that config included.
-
-<table>
-<tr>
-<td>Package</td> <td>Required config</td>
-</tr>
-
-<tr>
-<td>react-native-svg</td>
-<td>No extra config needed</td>
-</tr>
-
-<tr>
-<td>react-native-gesture-handler</td>
-<td>No extra config needed</td>
-</tr>
-
-<tr>
-<td>react-native-reanimated</td>
-<td>
-
-<details>
-<summary>
-Click to here to see the config
-</summary>
-
-```js
-module.exports = {
-  addons: [
-    /*existing addons,*/
-    {
-      name: '@storybook/addon-react-native-web',
-      options: {
-        modulesToTranspile: ['react-native-reanimated'],
-        babelPlugins: [
-          '@babel/plugin-proposal-export-namespace-from',
-          'react-native-reanimated/plugin',
-        ],
-      },
-    },
-  ],
-};
-```
-
-</details>
-</td>
-</tr>
-
-<tr>
-<td>native-base</td>
-<td>
-<details>
-<summary>
-Click to here to see the config
-</summary>
-Due to the vector icons dependency add the following
-
-```js
-module.exports = {
-  addons: [
-    /*existing addons,*/
-    {
-      name: '@storybook/addon-react-native-web',
-      options: {
-        modulesToTranspile: ['react-native-vector-icons'],
-      },
-    },
-  ],
-};
-```
-
-</details>
-</td>
-</tr>
-
-<tr>
-<td>react-native-paper</td>
-<td>
-<details>
-<summary>
-Click to here to see the config
-</summary>
-Due to the vector icons dependency add the following
-
-```js
-module.exports = {
-  addons: [
-    /*existing addons,*/
-    {
-      name: '@storybook/addon-react-native-web',
-      options: {
-        modulesToTranspile: ['react-native-vector-icons'],
-      },
-    },
-  ],
-};
-```
-
-</details>
-</td>
-</tr>
-
-<tr>
-<td>nativewind</td>
-<td>
-<details>
-<summary>
-Click to here to see the config
-</summary>
-Nativewind requires some additional babel config to work correctly. You can see an example of this config below.
-
-```js
-module.exports = {
-  addons: [
-    /*existing addons,*/
-    {
-      name: '@storybook/addon-react-native-web',
-      options: {
-        modulesToTranspile: [
-          'react-native-reanimated',
-          'nativewind',
-          'react-native-css-interop',
-        ],
-        babelPresets: ['nativewind/babel'],
-        babelPresetReactOptions: { jsxImportSource: 'nativewind' },
-        babelPlugins: [
-          'react-native-reanimated/plugin',
-           [
-            '@babel/plugin-transform-react-jsx',
-            {
-              runtime: 'automatic',
-              importSource: 'nativewind',
-            },
-          ],
-         ],
-      },
-    },
-  ],
-};
-```
-
-</details>
-</td>
-</tr>
-
-</table>
-
-## Adding support for static assets and svgs
-
-Install `@svgr/webpack` and `url-loader`
-
-```js
-module.exports = {
-  /*existing config*/
-  // to provide a public export for assets
-  staticDirs: ['<path_to_assets>'],
-  webpackFinal: async (config) => {
-    const fileLoaderRule = config.module.rules.find(
-      (rule) => rule.test && rule.test.test('.svg'),
-    );
-
-    if (fileLoaderRule) {
-      fileLoaderRule.exclude = /\.svg$/;
-    }
-
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ['@svgr/webpack', 'url-loader'],
-    });
-
-    return config;
-  },
-};
-```
-
-## Node polyfills for webpack 5
-
-install `node-polyfill-webpack-plugin`
-
-```js
-const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
-
-module.exports = {
-  /*existing config*/
-  core: {
-    builder: 'webpack5',
-  },
-  webpackFinal: async (config) => {
-    config.plugins.push(new NodePolyfillPlugin());
-
-    return config;
-  },
-};
-```
-
-## Known limitations
-
-- Libraries that don't support react-native-web will not work
-- Components will display on the web so may not be the same as a component on a mobile device since dom versions of those components may be used (like `<div>` and `span`)
-  - when using primitives such as View/Text or other cross platform components then the difference should be minimal.
